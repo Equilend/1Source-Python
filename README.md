@@ -1,10 +1,14 @@
-# 1Source-Python
+loans# 1Source-Python
 
 Demonstration code which accesses the 1Source REST API in a command-line Python program
 
 ## Description
 
-This project provides sample code and a template for accessing the 1Source REST API in [Python](https://www.python.org/). The code runs as a command-line program which utilizes switches to query the 1Source REST API endpoints.
+This project provides sample code and a template for accessing the 1Source REST API in [Python](https://www.python.org/). The code runs as a command-line program which utilizes switches to exercise the various 1Source REST API endpoints.
+
+## License
+
+This code is provided as-is, without warranty of any kind, express or implied. Please see the LICENSE.txt in the repository for more details.
 
 ## Getting Started
 
@@ -24,8 +28,8 @@ Clone the code repository locally from GitHub with the following command:
 Create and activate the Conda enviroment for 1Source-Python:
 
 ```
-1Source-Python>  conda create --name 1source-python python=3.11
-1Source-Python>  conda activate 1source-python
+1Source-Python> conda create --name 1source-python python=3.11
+1Source-Python> conda activate 1source-python
 
 ```
 
@@ -49,19 +53,19 @@ The output of that will show the command line options available:
 
 ````
 (1Source-Python) C:\dev\1Source-Python>python main.py -h
-usage: main.py [-h] [-g <Entity to query>] [-a <Trade Agreement Id>] [-e <Event Id>] [-c <Contract Id>]
-               [-ch <Contract Id>] [-p <Party Id>]
+usage: main.py [-h] [-g <Entity to query>] [-a <Trade Agreement Id>] [-e <Event Id>] [-c <Loan Id>]
+               [-ch <Loan Id>] [-p <Party Id>]
 
 1Source Python command line example
 
 options:
   -h, --help            Show this help message and exit
-  -g <Entity>           1Source API Endpoint to query [auth, agreements, contracts, events, parties, returns, rerates, recalls, delegations, buyins]
+  -g <Entity>           1Source API Endpoint to query [auth, agreements, loans, events, parties, returns, rerates, recalls, delegations, buyins]
   -a <Trade Agreement Id>
                         1Source API Endpoint to query Trade Agreements by agreement_id
   -e <Event Id>         1Source API Endpoint to query Events by event_id
-  -c <Contract Id>      1Source API Endpoint to query Contracts by contract_id
-  -ch <Contract Id>     1Source API Endpoint to query Contract History by contract_id
+  -c <Loan Id>          1Source API Endpoint to query Loans by loan_id
+  -ch <Loan Id>         1Source API Endpoint to query Loan History by loan_id
   -p <Party Id>         1Source API Endpoint to query Parties by party_id
   -d <Delegation Id>    1Source API Endpoint to query Delegations by delegation_id```
 
@@ -75,7 +79,7 @@ The 1Source REST API can return the following entities:
 - events
 - parties
 - agreements
-- contracts
+- loans
 - rerates
 - returns
 - recalls
@@ -96,9 +100,9 @@ The output of the command to retrieve events will be a JSON response from the 1S
 [
 {
 'eventId': '12201f69e056374d72ac60a0514375a2d0ba7d22b7f350a64cef8109c923e6caad65:12',
-'eventType': 'CONTRACT_PROPOSED',
+'eventType': 'LOAN_PROPOSED',
 'eventDateTime': '2024-03-28T11:49:27.468193Z',
-'resourceUri': '/v1/ledger/contracts/492c7066-eabc-4030-bbc0-7bd7141e3545'
+'resourceUri': '/v1/ledger/loans/492c7066-eabc-4030-bbc0-7bd7141e3545'
 }
 ]
 ```
@@ -139,24 +143,24 @@ The REST API can be queried for a particular agreement with an agreement_id
 (1Source-Python) C:\dev\1Source-Python>python main.py -a <Trade Agreement Id>
 ```
 
-#### Contracts
+#### Loans
 
-Similar to the Events call, to retrieve all contracts which the user is authorized to view, the following command will do so:
-
-```
-(1Source-Python) C:\dev\1Source-Python>python main.py -g contracts
-```
-
-The REST API can be queried for a particular contract with a contract_id
+Similar to the Events call, to retrieve all loans which the user is authorized to view, the following command will do so:
 
 ```
-(1Source-Python) C:\dev\1Source-Python>python main.py -c <Contract Id>
+(1Source-Python) C:\dev\1Source-Python>python main.py -g loans
 ```
 
-The REST API can be queried for the history of a particular contract with a contract_id
+The REST API can be queried for a particular loan with a loan_id
 
 ```
-(1Source-Python) C:\dev\1Source-Python>python main.py -ch <Contract Id>
+(1Source-Python) C:\dev\1Source-Python>python main.py -c <Loan Id>
+```
+
+The REST API can be queried for the history of a particular loan with a loan_id
+
+```
+(1Source-Python) C:\dev\1Source-Python>python main.py -ch <Loan Id>
 ```
 
 #### Rerates
@@ -222,7 +226,7 @@ These values should not be changed by the user unless otherwise instructed.
 
 #### Endpoints
 
-This section contains key/value pairs related to the 1Source REST API endpoints for events, parties, agreements, and contracts. These values should not be changed by the user unless otherwise instructed.
+This section contains key/value pairs related to the 1Source REST API endpoints for events, parties, agreements, and loans. These values should not be changed by the user unless otherwise instructed.
 
 #### Authentication
 
@@ -237,7 +241,11 @@ Contributors names and contact info
 ## Version History
 
 - 0.1
+
   - Initial Release
+
+- 0.5
+  - Update to 1Source REST API V1.1.0
 
 ```
 

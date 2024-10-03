@@ -34,7 +34,7 @@ class AppConfig:
     parties: str
     events: str
     agreements: str 
-    contracts: str
+    loans: str
     rerates: str
     returns: str
     recalls: str
@@ -63,7 +63,7 @@ class AppConfig:
             self.parties = config_vals[endpoints]["parties"]
             self.events = config_vals[endpoints]["events"]
             self.agreements = config_vals[endpoints]["agreements"]
-            self.contracts = config_vals[endpoints]["contracts"]
+            self.loans = config_vals[endpoints]["loans"]
             self.rerates = config_vals[endpoints]["rerates"]
             self.returns = config_vals[endpoints]["returns"]
             self.recalls = config_vals[endpoints]["recalls"]

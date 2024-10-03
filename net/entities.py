@@ -20,7 +20,7 @@ logger = configure_logging(logging, app_conf.log_file, app_conf.log_format, "ent
 def get_entity(endpoint: str, token: str) -> str:
     """
         Call the 1Source API endpoint to get an entity,
-        such as Parties, Contracts, Events, etc.
+        such as Parties, Loans, Events, etc.
     """
     headers: dict = {
         "Authorization": f"Bearer {token}",

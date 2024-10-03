@@ -8,7 +8,7 @@
 
 __author__ = "Dharm Kapadia"
 __copyright__ = "© 2023 EquiLend"
-__version__ = "0.4"
+__version__ = "0.5.0"
 __email__ = "dharm.kapadia@equilend.com"
 
 
@@ -48,12 +48,12 @@ def main():
     parser.add_argument(
         "-g",
         metavar="<Entity>",
-        help="1Source API Endpoint to query [auth, agreements, contracts, events, parties, rerates, returns, recalls, delegations, buyins]",
+        help="1Source API Endpoint to query [auth, agreements, loans, events, parties, rerates, returns, recalls, delegations, buyins]",
         required=False,
         choices=[
             "auth",
             "agreements",
-            "contracts",
+            "loans",
             "events",
             "parties",
             "rerates",
@@ -79,17 +79,17 @@ def main():
     )
 
     parser.add_argument(
-        "-c",
-        metavar="<Contract Id>",
+        "-l",
+        metavar="<loan_id>",
         required=False,
-        help="1Source API Endpoint to query Contracts by contract_id",
+        help="1Source API Endpoint to query Loans by loan_id",
     )
 
     parser.add_argument(
-        "-ch",
-        metavar="<Contract Id>",
+        "-lh",
+        metavar="<loan_id>",
         required=False,
-        help="1Source API Endpoint to query Contract History by contract_id",
+        help="1Source API Endpoint to query Loan History by loan_id",
     )
 
     parser.add_argument(
@@ -131,11 +131,11 @@ def main():
                     data = get_entity(app_conf.agreements, token)
                     print_output("Trade Agreements", data)
 
-            case "contracts":
+            case "loans":
                 if token:
-                    # Got an auth token, call the contracts endpoint to get the data
-                    data = get_entity(app_conf.contracts, token)
-                    print_output("Contracts", data)
+                    # Got an auth token, call the loans endpoint to get the data
+                    data = get_entity(app_conf.loans, token)
+                    print_output("Loans", data)
 
             case "events":
                 # Got an auth token, call the events endpoint to get the data
@@ -197,18 +197,18 @@ def main():
             print_output("Event", data)
         exit(0)
 
-    if "c" in vargs and vargs["c"] is not None:
-        entity_id: str = vargs["c"]
-        data = get_by_id(app_conf.contracts, entity_id, token)
+    if "l" in vargs and vargs["l"] is not None:
+        entity_id: str = vargs["l"]
+        data = get_by_id(app_conf.loans, entity_id, token)
         if data:
-            print_output("Contract", data)
+            print_output("Loan", data)
         exit(0)
 
-    if "ch" in vargs and vargs["ch"] is not None:
-        entity_id: str = vargs["ch"]
-        data = get_by_id(app_conf.contracts, entity_id, token, True)
+    if "lh" in vargs and vargs["lh"] is not None:
+        entity_id: str = vargs["lh"]
+        data = get_by_id(app_conf.loans, entity_id, token, True)
         if data:
-            print_output("Contract History", data)
+            print_output("Loan History", data)
         exit(0)
 
     if "p" in vargs and vargs["p"] is not None:
