@@ -106,6 +106,27 @@ def main():
         help="1Source API Endpoint to query Privileged Venue delegations",
     )
 
+    parser.add_argument(
+        "-re",
+        metavar="<Return Id>",
+        required=False,
+        help="1Source API Endpoint to query Returns by return_id",
+    )
+
+    parser.add_argument(
+        "-rc",
+        metavar="<Recall Id>",
+        required=False,
+        help="1Source API Endpoint to query Recalls by recall_id",
+    )
+
+    parser.add_argument(
+        "-rr",
+        metavar="<Rerate Id>",
+        required=False,
+        help="1Source API Endpoint to query Rerates by rerate_id",
+    )
+
     # Parse command line arguments
     args = parser.parse_args()
     vargs: dict = vars(args)
@@ -223,6 +244,27 @@ def main():
         data = get_by_id(app_conf.delegations, entity_id, token)
         if data:
             print_output("Delegation", data)
+        exit(0)
+
+    if "re" in vargs and vargs["re"] is not None:
+        entity_id: str = vargs["re"]
+        data = get_by_id(app_conf.returns, entity_id, token)
+        if data:
+            print_output("Returns", data)
+        exit(0)
+
+    if "rc" in vargs and vargs["rc"] is not None:
+        entity_id: str = vargs["rc"]
+        data = get_by_id(app_conf.recalls, entity_id, token)
+        if data:
+            print_output("Recalls", data)
+        exit(0)
+
+    if "rr" in vargs and vargs["rr"] is not None:
+        entity_id: str = vargs["rr"]
+        data = get_by_id(app_conf.rerates, entity_id, token)
+        if data:
+            print_output("Rerate", data)
         exit(0)
 
 
