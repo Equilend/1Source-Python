@@ -60,14 +60,17 @@ usage: main.py [-h] [-g <Entity to query>] [-a <Trade Agreement Id>] [-e <Event 
 
 options:
   -h, --help            Show this help message and exit
-  -g <Entity>           1Source API Endpoint to query [auth, agreements, loans, events, parties, returns, rerates, recalls, delegations, buyins]
+  -g <Entity>           1Source API Endpoint to query [auth, agreements, loans, events, parties, returns, rerates, recalls, delegations]
   -a <Trade Agreement Id>
                         1Source API Endpoint to query Trade Agreements by agreement_id
   -e <Event Id>         1Source API Endpoint to query Events by event_id
-  -c <Loan Id>          1Source API Endpoint to query Loans by loan_id
-  -ch <Loan Id>         1Source API Endpoint to query Loan History by loan_id
+  -l <Loan Id>          1Source API Endpoint to query Loans by loan_id
+  -lh <Loan Id>         1Source API Endpoint to query Loan History by loan_id
+  -re <Return Id>       1Source API Endpoint to query Loan Return by return_id
+  -rc <Recall Id>       1Source API Endpoint to query Loan Recall by recall_id
+  -rr <Rerate Id>       1Source API Endpoint to query Loan Rerate by rerate_id
   -p <Party Id>         1Source API Endpoint to query Parties by party_id
-  -d <Delegation Id>    1Source API Endpoint to query Delegations by delegation_id```
+  -d <Delegation Id>    1Source API Endpoint to query Delegations by delegation_id
 
 ````
 
@@ -171,6 +174,12 @@ Similar to the Events call, to retrieve all rerates which the user is authorized
 (1Source-Python) C:\dev\1Source-Python>python main.py -g rerates
 ```
 
+The REST API can be queried for a loan rerate with a rerate_id
+
+```
+(1Source-Python) C:\dev\1Source-Python>python main.py -rr <Rerate Id>
+```
+
 #### Returns
 
 Similar to the Events call, to retrieve all returns which the user is authorized to view, the following command will do so:
@@ -179,12 +188,24 @@ Similar to the Events call, to retrieve all returns which the user is authorized
 (1Source-Python) C:\dev\1Source-Python>python main.py -g returns
 ```
 
+The REST API can be queried for a loan return with a return_id
+
+```
+(1Source-Python) C:\dev\1Source-Python>python main.py -re <Return Id>
+```
+
 #### Recalls
 
 Similar to the Events call, to retrieve all recalls which the user is authorized to view, the following command will do so:
 
 ```
 (1Source-Python) C:\dev\1Source-Python>python main.py -g recalls
+```
+
+The REST API can be queried for a loan recall with a recall_id
+
+```
+(1Source-Python) C:\dev\1Source-Python>python main.py -rc <Recall Id>
 ```
 
 #### Buyins

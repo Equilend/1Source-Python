@@ -48,7 +48,7 @@ def main():
     parser.add_argument(
         "-g",
         metavar="<Entity>",
-        help="1Source API Endpoint to query [auth, agreements, loans, events, parties, rerates, returns, recalls, delegations, buyins]",
+        help="1Source API Endpoint to query [auth, agreements, loans, events, parties, rerates, returns, recalls, delegations]",
         required=False,
         choices=[
             "auth",
@@ -60,7 +60,6 @@ def main():
             "returns",
             "recalls",
             "delegations",
-            "buyins",
         ],
     )
 
@@ -93,6 +92,27 @@ def main():
     )
 
     parser.add_argument(
+        "-re",
+        metavar="<Return Id>",
+        required=False,
+        help="1Source API Endpoint to query Loan Return by return_id",
+    )
+
+    parser.add_argument(
+        "-rc",
+        metavar="<Recall Id>",
+        required=False,
+        help="1Source API Endpoint to query Loan Recall by recall_id",
+    )
+
+    parser.add_argument(
+        "-rr",
+        metavar="<Rerate Id>",
+        required=False,
+        help="1Source API Endpoint to query Loan Rerate by rerate_id",
+    )
+
+    parser.add_argument(
         "-p",
         metavar="<Party Id>",
         required=False,
@@ -104,27 +124,6 @@ def main():
         metavar="<Delegation Id>",
         required=False,
         help="1Source API Endpoint to query Privileged Venue delegations",
-    )
-
-    parser.add_argument(
-        "-re",
-        metavar="<Return Id>",
-        required=False,
-        help="1Source API Endpoint to query Returns by return_id",
-    )
-
-    parser.add_argument(
-        "-rc",
-        metavar="<Recall Id>",
-        required=False,
-        help="1Source API Endpoint to query Recalls by recall_id",
-    )
-
-    parser.add_argument(
-        "-rr",
-        metavar="<Rerate Id>",
-        required=False,
-        help="1Source API Endpoint to query Rerates by rerate_id",
     )
 
     # Parse command line arguments
